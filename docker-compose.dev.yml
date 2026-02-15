@@ -3,9 +3,9 @@ version: '3.8'
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: ecommerce-db-dev
+    container_name: app-db-dev
     environment:
-      POSTGRES_DB: ecommerce
+      POSTGRES_DB: ecommerce 
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
     ports:
@@ -13,7 +13,7 @@ services:
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
     networks:
-      - ecommerce-network-dev
+      - app-network-dev
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -21,13 +21,13 @@ services:
       retries: 5
 
   backend:
-    build: 
+    build:
       context: ./backend
       dockerfile: Dockerfile.dev
-    container_name: ecommerce-backend-dev
+    container_name: app-backend-dev
     environment:
       SPRING_PROFILES_ACTIVE: dev
-      DB_URL: jdbc:postgresql://postgres:5432/ecommerce
+      DB_URL: jdbc:postgresql://postgres:5432/ecommerce  # Must match POSTGRES_DB
       DB_USERNAME: postgres
       DB_PASSWORD: ${DB_PASSWORD:-postgres}
     ports:
@@ -39,13 +39,13 @@ services:
       postgres:
         condition: service_healthy
     networks:
-      - ecommerce-network-dev
+      - app-network-dev
 
   frontend:
-    build: 
+    build:
       context: ./frontend
       dockerfile: Dockerfile.dev
-    container_name: ecommerce-frontend-dev
+    container_name: app-frontend-dev
     ports:
       - "5173:5173"
     volumes:
@@ -57,10 +57,10 @@ services:
     depends_on:
       - backend
     networks:
-      - ecommerce-network-dev
+      - app-network-dev
 
 networks:
-  ecommerce-network-dev:
+  app-network-dev:
     driver: bridge
 
 volumes:

@@ -1,39 +1,39 @@
-## 🐳 Docker Setup
+# Spring React Template
 
-This springboot react template includes Docker configuration:
+A production-ready full-stack template with Spring Boot and React, containerized with Docker.
 
-### Files tracked in Git:
-- `backend/Dockerfile` - Spring Boot container definition
-- `frontend/Dockerfile` - React/Vite container definition  
-- `docker-compose.yml` - Multi-container orchestration
-- `backend/application-docker.properties` - Docker-specific config
-- `.dockerignore` files - Keep images clean
+## 🚀 Tech Stack
 
-### Files you need to create (NOT tracked):
-1. Copy `backend/application-example.properties` to `backend/application-dev.properties`
-2. Copy `.env.example` to `.env`
-3. Fill in your actual credentials
+### Backend
+- Spring Boot 4.0.2
+- Spring Data JPA
+- PostgreSQL
+- Maven
+- Java 21
 
-## 🚀 Quick Start
+### Frontend
+- React 19
+- TypeScript
+- Vite
+- React Router 7
+- Tailwind CSS 4 (optional)
 
-### Prerequisites
-- Docker and Docker Compose
-- Git
+### DevOps
+- Docker & Docker Compose
+- Multi-stage builds
+- Development & Production configs
 
-### Development Mode (with hot reload)
+## 📋 Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Git](https://git-scm.com/)
+
+## 🛠️ Quick Start
+
+### 1. Clone and setup
 ```bash
-# Clone the repository
-git clone <your-repo>
+git clone https://github.com/yourusername/spring-react-template.git
 cd spring-react-template
-
-# Copy environment variables
 cp .env.example .env
 # Edit .env with your database password
-
-# Start in development mode
-docker-compose -f docker-compose.dev.yml up --build
-
-# Access:
-# - Frontend: http://localhost:5173
-# - Backend API: http://localhost:8080
-# - Database: localhost:5432

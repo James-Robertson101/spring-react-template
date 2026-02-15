@@ -2,27 +2,25 @@
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy pom.xml and download dependencies (caching optimization)
+# Copy pom.xml and download dependencies
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
-# Copy source code and build
+# Copy source and build
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Run stage
+# Runtime stage
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-# Create a non-root user to run the application
+# Create non-root user
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 
-# Copy the built jar from build stage
+# Copy built jar
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose the port your app runs on
 EXPOSE 8080
 
-# Run the application with environment variables
 ENTRYPOINT ["java", "-jar", "app.jar"]
