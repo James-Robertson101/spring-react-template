@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Environment files
+*.env
+.env.*
+application-dev.properties
+application-prod.properties
+application-local.properties
+!application-docker.properties
+!application.properties
+
+# Build artifacts
+target/
+*.jar
+*.war
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Test reports
+test-reports/
+surefire-reports/

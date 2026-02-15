@@ -1,0 +1,58 @@
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.metadata/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# === Environment Variables ===
+.env
+*.env
+.env.local
+.env.development
+.env.production
+
+# === Application Properties (keep examples, hide real credentials) ===
+**/application-dev.properties
+**/application-prod.properties
+**/application-local.properties
+**/application-*.properties
+!**/application.properties
+!**/application-example.properties
+!**/application-docker.properties  # TRACK THIS - it's for Docker
+
+# === Backend (Java/Spring Boot) ===
+backend/target/
+backend/HELP.md
+backend/*.log
+backend/*.tap
+backend/bin/
+backend/build/
+backend/.mvn/timing.properties
+
+# === Frontend (React/Node) ===
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+frontend/coverage/
+frontend/*.log
+
+# === Docker (Track the files, ignore overrides) ===
+docker-compose.override.yml
+*.pid
+
+# === Test Output ===
+test-results/
+coverage/
+*.tap
+*.xml

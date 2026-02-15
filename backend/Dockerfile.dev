@@ -1,0 +1,12 @@
+FROM maven:3.9.6-eclipse-temurin-21
+WORKDIR /app
+
+# Copy only pom.xml first for better caching
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy source code (will be overridden by volume mount)
+COPY src ./src
+
+# Use spring-boot:run for hot reload
+CMD ["mvn", "spring-boot:run", "-Dspring-boot.run.profiles=dev"]
