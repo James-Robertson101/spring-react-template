@@ -36,4 +36,4 @@ A production-ready full-stack template with Spring Boot and React, containerized
 git clone https://github.com/yourusername/spring-react-template.git
 cd spring-react-template
 cp .env.example .env
-# Edit .env with your database password
+# Edit .env with your database password username and database name
